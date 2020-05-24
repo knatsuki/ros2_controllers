@@ -66,7 +66,7 @@ JointStateController::update()
 {
   if (!joint_state_publisher_->is_activated()) {
     RCUTILS_LOG_WARN_ONCE_NAMED("publisher", "joint state publisher is not activated");
-    return hardware_interface::HW_RET_ERROR;
+    return controller_interface::CONTROLLER_INTERFACE_RET_ERROR;
   }
 
   joint_state_msg_.header.stamp = rclcpp::Clock().now();
@@ -80,7 +80,7 @@ JointStateController::update()
 
   // publish
   joint_state_publisher_->publish(joint_state_msg_);
-  return hardware_interface::HW_RET_OK;
+  return controller_interface::CONTROLLER_INTERFACE_RET_SUCCESS;
 }
 
 }  // namespace joint_state_controller
